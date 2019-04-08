@@ -1,11 +1,2 @@
 #!/bin/bash
-
-docker build --build-arg CONFIG=gpu      -t daisukekobayashi/darknet .
-docker build --build-arg CONFIG=cpu      -t daisukekobayashi/darknet:cpu .
-docker build --build-arg CONFIG=gpu_cc53 -t daisukekobayashi/darknet:gpu-cc53 .
-docker build --build-arg CONFIG=gpu_cc60 -t daisukekobayashi/darknet:gpu-cc60 .
-docker build --build-arg CONFIG=gpu_cc61 -t daisukekobayashi/darknet:gpu-cc61 .
-docker build --build-arg CONFIG=gpu_cc62 -t daisukekobayashi/darknet:gpu-cc62 .
-docker build --build-arg CONFIG=gpu_cc70 -t daisukekobayashi/darknet:gpu-cc70 .
-docker build --build-arg CONFIG=gpu_cc72 -t daisukekobayashi/darknet:gpu-cc72 .
-docker build --build-arg CONFIG=gpu_cc75 -t daisukekobayashi/darknet:gpu-cc75 .
+docker build --build-arg CONFIG=$VAR -t $IMAGE_NAME .
