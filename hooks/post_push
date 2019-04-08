@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ "$DOCKER_TAG" = "latest" ]; then
+  docker tag $IMAGE_NAME $DOCKER_REPO:gpu
+  docker push $DOCKER_REPO:gpu
+fi
