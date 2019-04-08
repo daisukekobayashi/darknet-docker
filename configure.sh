@@ -18,6 +18,11 @@ function enable_cudnn_half() {
   sed -i -e 's/CUDNN_HALF=0/CUDNN_HALF=1/g' $makefile
 }
 
+function enable_opencv() {
+  echo "enable OPENCV flag"
+  sed -i -e 's/OPENCV=0/OPENCV=1/g' $makefile
+}
+
 function enable_avx() {
   echo "enable AVX flag"
   sed -i -e 's/AVX=0/AVX=1/g' $makefile
