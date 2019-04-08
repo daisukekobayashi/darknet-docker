@@ -1,2 +1,9 @@
 #!/bin/bash
-docker build --build-arg CONFIG=$VAR -t $IMAGE_NAME .
+
+if [ "$DOCKER_TAG" = "latest" ]; then
+  VAR="gpu"
+else
+  VAR=$DOCKER_TAG
+fi
+
+docker build --build-arg CONFIG=$VAR -t $DOCKER_REPO:$Docker_TAG .

@@ -64,45 +64,45 @@ case ${option} in
     enable_cudnn
     enable_opencv
     ;;
-  "gpu_cc53")
+  "gpu-cc53")
     enable_gpu
     enable_cudnn
     enable_opencv
     enable_arch 53
     ;;
-  "gpu_cc60")
+  "gpu-cc60")
     enable_gpu
     enable_cudnn
     enable_opencv
     enable_arch 60
     ;;
-  "gpu_cc61")
+  "gpu-cc61")
     enable_gpu
     enable_cudnn
     enable_opencv
     enable_arch 61
     ;;
-  "gpu_cc62")
+  "gpu-cc62")
     enable_gpu
     enable_cudnn
     enable_opencv
     enable_arch 62
     ;;
-  "gpu_cc70")
+  "gpu-cc70")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
     enable_opencv
     enable_arch 70
     ;;
-  "gpu_cc72")
+  "gpu-cc72")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
     enable_opencv
     enable_arch 72
     ;;
-  "gpu_cc75")
+  "gpu-cc75")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
@@ -111,5 +111,6 @@ case ${option} in
     ;;
   *)
     echo "error"
+    exit 1
     ;;
 esac
