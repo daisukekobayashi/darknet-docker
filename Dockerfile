@@ -1,5 +1,4 @@
-ARG BASE_IMAGE=nvidia/cuda:10.0-cudnn7-devel
-FROM $BASE_IMAGE
+FROM nvidia/cuda:10.0-cudnn7-devel
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
 ENV DEBIAN_FRONTEND noninteractivea
