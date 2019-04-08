@@ -6,4 +6,4 @@ else
   VAR=$DOCKER_TAG
 fi
 
-docker build --build-arg CONFIG=$VAR -t $DOCKER_REPO:$DOCKER_TAG ..
+docker build --build-arg CONFIG=$VAR -t $DOCKER_REPO:$DOCKER_TAG .
