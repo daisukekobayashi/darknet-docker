@@ -1,4 +1,5 @@
-FROM nvidia/cuda:10.0-cudnn7-devel
+ARG BASE_IMAGE=nvidia/cuda:10.0-cudnn7-devel
+FROM $BASE_IMAGE
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
 ENV DEBIAN_FRONTEND noninteractivea
@@ -7,7 +8,7 @@ ARG CONFIG
 
 RUN apt-get update \
       && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates \
-            git curl build-essential libopencv-dev \
+            git build-essential libopencv-dev \
       && rm -rf /var/lib/apt/lists/*
 
 COPY configure.sh /tmp/

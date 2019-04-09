@@ -6,4 +6,11 @@ else
   VAR=$DOCKER_TAG
 fi
 
-docker build --build-arg CONFIG=$VAR -t $DOCKER_REPO:$DOCKER_TAG .
+if [ "$DOCKER_TAG" = "cpu" ]; then
+  docker build --build-arg BASE_IMAGE="ubuntu:18.04" \
+    --build-arg CONFIG=$VAR \
+    -t $DOCKER_REPO:$DOCKER_TAG .
+else
+  docker build --build-arg CONFIG=$VAR -t $DOCKER_REPO:$DOCKER_TAG .
+fi
+
