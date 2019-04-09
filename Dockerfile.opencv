@@ -8,7 +8,7 @@ ARG CONFIG
 
 RUN apt-get update \
       && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates \
-            git build-essential \
+            git build-essential libopencv-dev \
       && rm -rf /var/lib/apt/lists/*
 
 COPY configure.sh /tmp/

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-option="${1}"
+tag="${1}"
 makefile="Makefile"
 
 function enable_gpu() {
@@ -53,8 +53,12 @@ function enable_arch() {
   sed -i -e "s/# ARCH= -gencode arch=compute_$1/ARCH= -gencode arch=compute_$1/g" $makefile
 }
 
-case ${option} in
+case ${tag} in
   "cpu")
+    enable_avx
+    enable_openmp
+    ;;
+  "cpu-cv")
     enable_opencv
     enable_avx
     enable_openmp
@@ -62,9 +66,18 @@ case ${option} in
   "gpu")
     enable_gpu
     enable_cudnn
+    ;;
+  "gpu-cv")
+    enable_gpu
+    enable_cudnn
     enable_opencv
     ;;
   "gpu-cc53")
+    enable_gpu
+    enable_cudnn
+    enable_arch 53
+    ;;
+  "gpu-cc53-cv")
     enable_gpu
     enable_cudnn
     enable_opencv
@@ -73,16 +86,31 @@ case ${option} in
   "gpu-cc60")
     enable_gpu
     enable_cudnn
+    enable_arch 60
+    ;;
+  "gpu-cc60-cv")
+    enable_gpu
+    enable_cudnn
     enable_opencv
     enable_arch 60
     ;;
   "gpu-cc61")
     enable_gpu
     enable_cudnn
+    enable_arch 61
+    ;;
+  "gpu-cc61-cv")
+    enable_gpu
+    enable_cudnn
     enable_opencv
     enable_arch 61
     ;;
   "gpu-cc62")
+    enable_gpu
+    enable_cudnn
+    enable_arch 62
+    ;;
+  "gpu-cc62-cv")
     enable_gpu
     enable_cudnn
     enable_opencv
@@ -95,7 +123,19 @@ case ${option} in
     enable_opencv
     enable_arch 70
     ;;
+  "gpu-cc70-cv")
+    enable_gpu
+    enable_cudnn
+    enable_cudnn_half
+    enable_arch 70
+    ;;
   "gpu-cc72")
+    enable_gpu
+    enable_cudnn
+    enable_cudnn_half
+    enable_arch 72
+    ;;
+  "gpu-cc72-cv")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
@@ -106,11 +146,17 @@ case ${option} in
     enable_gpu
     enable_cudnn
     enable_cudnn_half
+    enable_arch 75
+    ;;
+  "gpu-cc75-cv")
+    enable_gpu
+    enable_cudnn
+    enable_cudnn_half
     enable_opencv
     enable_arch 75
     ;;
   *)
-    echo "error"
+    echo "error: $tag is not supported"
     exit 1
     ;;
 esac
