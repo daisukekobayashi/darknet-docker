@@ -4,14 +4,16 @@ LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
 ENV DEBIAN_FRONTEND noninteractivea
 
-ARG CONFIG
+ARG ADDITIONAL_PACKAGES=""
 
 RUN apt-get update \
       && apt-get install --no-install-recommends --no-install-suggests -y gnupg1 ca-certificates \
-            git build-essential \
+            git build-essential $ADDITIONAL_PACKAGES \
       && rm -rf /var/lib/apt/lists/*
 
 COPY configure.sh /tmp/
+
+ARG CONFIG
 
 RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \
       && /tmp/configure.sh $CONFIG && make \

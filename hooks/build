@@ -10,9 +10,13 @@ if [[ "$DOCKER_TAG" == *-cv ]]; then
   if [ "$DOCKER_TAG" = "cpu-cv" ]; then
     docker build --build-arg BASE_IMAGE="ubuntu:18.04" \
       --build-arg CONFIG=$VAR \
-      -t $DOCKER_REPO:$DOCKER_TAG -f ./Dockerfile.opencv .
+      --build-arg ADDITIONAL_PACKAGES="libopencv-dev" \
+      -t $DOCKER_REPO:$DOCKER_TAG .
   else
-    docker build --build-arg CONFIG=$VAR -t $DOCKER_REPO:$DOCKER_TAG -f ./Dockerfile.opencv .
+    docker build \
+      --build-arg CONFIG=$VAR \
+      --build-arg ADDITIONAL_PACKAGES="libopencv-dev" \
+      -t $DOCKER_REPO:$DOCKER_TAG .
   fi
 else
   if [ "$DOCKER_TAG" = "cpu" ]; then
