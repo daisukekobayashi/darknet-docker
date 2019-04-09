@@ -120,13 +120,13 @@ case ${tag} in
     enable_gpu
     enable_cudnn
     enable_cudnn_half
-    enable_opencv
     enable_arch 70
     ;;
   "gpu-cc70-cv")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
+    enable_opencv
     enable_arch 70
     ;;
   "gpu-cc72")
