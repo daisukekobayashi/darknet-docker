@@ -77,7 +77,7 @@ case ${tag} in
     enable_cudnn
     enable_arch 53
     ;;
-  "gpu-cc53-cv")
+  "gpu-cv-cc53")
     enable_gpu
     enable_cudnn
     enable_opencv
@@ -88,7 +88,7 @@ case ${tag} in
     enable_cudnn
     enable_arch 60
     ;;
-  "gpu-cc60-cv")
+  "gpu-cv-cc60")
     enable_gpu
     enable_cudnn
     enable_opencv
@@ -99,7 +99,7 @@ case ${tag} in
     enable_cudnn
     enable_arch 61
     ;;
-  "gpu-cc61-cv")
+  "gpu-cv-cc61")
     enable_gpu
     enable_cudnn
     enable_opencv
@@ -110,7 +110,7 @@ case ${tag} in
     enable_cudnn
     enable_arch 62
     ;;
-  "gpu-cc62-cv")
+  "gpu-cv-cc62")
     enable_gpu
     enable_cudnn
     enable_opencv
@@ -122,7 +122,7 @@ case ${tag} in
     enable_cudnn_half
     enable_arch 70
     ;;
-  "gpu-cc70-cv")
+  "gpu-cv-cc70")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
@@ -135,7 +135,7 @@ case ${tag} in
     enable_cudnn_half
     enable_arch 72
     ;;
-  "gpu-cc72-cv")
+  "gpu-cv-cc72")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
@@ -148,7 +148,7 @@ case ${tag} in
     enable_cudnn_half
     enable_arch 75
     ;;
-  "gpu-cc75-cv")
+  "gpu-cv-cc75")
     enable_gpu
     enable_cudnn
     enable_cudnn_half
