@@ -13,6 +13,9 @@ RUN apt-get update \
 
 COPY configure.sh /tmp/
 
+ARG GIT_COMMIT=unspecified
+LABEL git_commit=$GIT_COMMIT
+
 ARG CONFIG
 
 RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \

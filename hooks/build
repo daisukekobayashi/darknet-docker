@@ -1,5 +1,7 @@
 #!/bin/bash
 
+GIT_COMMIT=`git ls-remote https://github.com/AlexeyAB/darknet.git HEAD | awk '{ print $1 }'`
+
 if [ "$DOCKER_TAG" = "latest" ]; then
   VAR="gpu"
 else
@@ -11,20 +13,26 @@ if [[ "$DOCKER_TAG" == *cv* ]]; then
     docker build --build-arg BASE_IMAGE="ubuntu:18.04" \
       --build-arg CONFIG=$VAR \
       --build-arg ADDITIONAL_PACKAGES="libopencv-dev" \
+      --build-arg GIT_COMMIT=$GIT_COMMIT \
       -t $DOCKER_REPO:$DOCKER_TAG .
   else
     docker build \
       --build-arg CONFIG=$VAR \
       --build-arg ADDITIONAL_PACKAGES="libopencv-dev" \
+      --build-arg GIT_COMMIT=$GIT_COMMIT \
       -t $DOCKER_REPO:$DOCKER_TAG .
   fi
 else
   if [ "$DOCKER_TAG" = "cpu" ]; then
     docker build --build-arg BASE_IMAGE="ubuntu:18.04" \
       --build-arg CONFIG=$VAR \
+      --build-arg GIT_COMMIT=$GIT_COMMIT \
       -t $DOCKER_REPO:$DOCKER_TAG .
   else
-    docker build --build-arg CONFIG=$VAR -t $DOCKER_REPO:$DOCKER_TAG .
+    docker build \
+      --build-arg CONFIG=$VAR \
+      --build-arg GIT_COMMIT=$GIT_COMMIT \
+      -t $DOCKER_REPO:$DOCKER_TAG .
   fi
 fi
 
