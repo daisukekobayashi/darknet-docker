@@ -2,7 +2,7 @@ ARG BASE_IMAGE=nvidia/cuda:10.0-cudnn7-devel
 FROM $BASE_IMAGE
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
-ENV DEBIAN_FRONTEND noninteractivea
+ENV DEBIAN_FRONTEND noninteractive
 
 ARG ADDITIONAL_PACKAGES=""
 
