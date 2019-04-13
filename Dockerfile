@@ -13,14 +13,17 @@ RUN apt-get update \
 
 COPY configure.sh /tmp/
 
+ARG SOURCE_BRANCH=unspecified
+ENV SOURCE_BRANCH $SOURCE_BRANCH
 
-ARG GIT_COMMIT=unspecified
-LABEL git_commit=$GIT_COMMIT
+ARG SOURCE_COMMIT=unspecified
+ENV SOURCE_COMMIT $SOURCE_COMMIT
 
 ARG CONFIG
 
 RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \
-      && git reset --hard $GIT_COMMIT \
+      && git checkout $SOURCE_BRANCH \
+      && git reset --hard $SOURCE_COMMIT \
       && /tmp/configure.sh $CONFIG && make \
       && cp darknet /usr/local/bin \
       && cd .. && rm -rf darknet
