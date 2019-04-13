@@ -1,6 +1,14 @@
 #!/bin/bash
 
-SOURCE_COMMIT=`git ls-remote https://github.com/AlexeyAB/darknet.git HEAD | awk '{ print $1 }'`
+if [[ "$DOCKER_TAG" == yolo_v3* ]]; then
+  SOURCE_BRANCH="darknet_yolo_v3"
+  SOURCE_COMMIT=`git ls-remote https://github.com/AlexeyAB/darknet.git darknet_yolo_v3 | awk '{ print $1 }'`
+  DOCKER_TAG=`echo $DOCKER_TAG | sed -e "s/$SOURCE_BRANCH-//g" | awk '{ print $1 }'`
+else
+  SOURCE_BRANCH="master"
+  SOURCE_COMMIT=`git ls-remote https://github.com/AlexeyAB/darknet.git HEAD | awk '{ print $1 }'`
+fi
+
 
 if [ "$DOCKER_TAG" = "latest" ]; then
   VAR="gpu"
