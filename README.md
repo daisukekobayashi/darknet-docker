@@ -42,3 +42,11 @@ $ docker run --runtime=nvidia --rm -v $PWD:/workspace -w /workspace daisukekobay
 ```
 
 This is example to test yolov3 using Darknet gpu container.
+
+---
+
+```sh
+$ docker run --rm -it daisukekobayashi/darinet:cpu bash -c 'echo "$SOURCE_BRANCH" && echo "$SOURCE_COMMIT"'
+```
+
+Check darknet version.
