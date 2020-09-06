@@ -58,9 +58,16 @@ case ${tag} in
     enable_avx
     enable_openmp
     ;;
+  "cpu-noopt")
+    enable_openmp
+    ;;
   "cpu-cv")
     enable_opencv
     enable_avx
+    enable_openmp
+    ;;
+  "cpu-noopt-cv")
+    enable_opencv
     enable_openmp
     ;;
   "gpu")
