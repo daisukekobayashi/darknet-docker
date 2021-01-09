@@ -47,7 +47,7 @@ This is example to test yolov3 using Darknet gpu container.
 ---
 
 ```sh
-$ docker run --rm -it daisukekobayashi/darinet:cpu bash -c 'echo "$SOURCE_BRANCH" && echo "$SOURCE_COMMIT"'
+$ docker run --rm -it daisukekobayashi/darknet:cpu bash -c 'echo "$SOURCE_BRANCH" && echo "$SOURCE_COMMIT"'
 ```
 
 Check darknet version.
