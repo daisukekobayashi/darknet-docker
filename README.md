@@ -14,6 +14,16 @@ Tags means options in the Makefile when darknet binary was built. You can check 
 * ``gpu`` tag means images are built with ``GPU=1`` and ``CUDNN=1``
     - ``cc**`` tag means compute compability of GPU. Images with this tag are optimized for GPU architecture. You can check compute compability of your GPU [here](https://developer.nvidia.com/cuda-gpus "CUDA GPUs"). If compute compability is greater than or equal to 7.0, images are built with ``CUDNN_HALF=1``.
 
+## Releases
+
+This repository build docker images from latest darknet commit automatically. If you want to use released darknet images, please add released tag name before base image tags. For example when you want to use [YOLOv4 pre-release](https://github.com/AlexeyAB/darknet/releases/tag/darknet_yolo_v4_pre "YOLOv4 pre-release") gpu image, you can pull image as follows.
+
+```sh
+$ docker pull daisukekobayashi/darknet:darknet_yolo_v4_pre-gpu
+```
+
+You can check available tags [here](https://hub.docker.com/r/daisukekobayashi/darknet/tags?page=1&ordering=last_updated "daisukekobayashi/darknet tags").
+
 ## Running docker container
 
 ```sh
