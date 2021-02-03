@@ -1,14 +1,11 @@
-ARG BASE_IMAGE=nvidia/cuda:10.0-cudnn7-devel
-FROM $BASE_IMAGE
+FROM ubuntu:18.04 AS builder
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ARG ADDITIONAL_PACKAGES=""
-
 RUN apt-get update \
       && apt-get install --no-install-recommends --no-install-suggests -y gnupg2 ca-certificates \
-            git build-essential $ADDITIONAL_PACKAGES \
+            git build-essential libopencv-dev \
       && rm -rf /var/lib/apt/lists/*
 
 COPY configure.sh /tmp/
@@ -27,3 +24,20 @@ RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \
       && /tmp/configure.sh $CONFIG && make \
       && cp darknet /usr/local/bin \
       && cd .. && rm -rf darknet
+
+FROM ubuntu:18.04
+LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+ARG SOURCE_BRANCH=unspecified
+ENV SOURCE_BRANCH $SOURCE_BRANCH
+
+ARG SOURCE_COMMIT=unspecified
+ENV SOURCE_COMMIT $SOURCE_COMMIT
+
+RUN apt-get update \
+      && apt-get install --no-install-recommends --no-install-suggests -y libopencv-highgui3.2 \
+      && rm -rf /var/lib/apt/lists/*
+
+COPY --from=builder /usr/local/bin/darknet /usr/loca/bin/darknet
