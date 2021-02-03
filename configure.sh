@@ -162,6 +162,32 @@ case ${tag} in
     enable_opencv
     enable_arch 75
     ;;
+  "gpu-cc80")
+    enable_gpu
+    enable_cudnn
+    enable_cudnn_half
+    enable_arch 80
+    ;;
+  "gpu-cv-cc80")
+    enable_gpu
+    enable_cudnn
+    enable_cudnn_half
+    enable_opencv
+    enable_arch 80
+    ;;
+  "gpu-cc86")
+    enable_gpu
+    enable_cudnn
+    enable_cudnn_half
+    enable_arch 86
+    ;;
+  "gpu-cv-cc86")
+    enable_gpu
+    enable_cudnn
+    enable_cudnn_half
+    enable_opencv
+    enable_arch 86
+    ;;
   *)
     echo "error: $tag is not supported"
     exit 1
