@@ -16,14 +16,14 @@ if [[ "$DOCKER_TAG" == *cv* ]]; then
       --build-arg ADDITIONAL_PACKAGES="libopencv-dev" \
       --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
       --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
-      -t $DOCKER_REPO:$DOCKER_TAG .
+      -t $DOCKER_REPO:$DOCKER_TAG -f $DOCKERFILE_PATH .
   else
     docker build \
       --build-arg CONFIG=$VAR \
       --build-arg ADDITIONAL_PACKAGES="libopencv-dev" \
       --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
       --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
-      -t $DOCKER_REPO:$DOCKER_TAG .
+      -t $DOCKER_REPO:$DOCKER_TAG -f $DOCKERFILE_PATH .
   fi
 else
   if [ "$DOCKER_TAG" = "cpu" ] || [ "$DOCKER_TAG" = "cpu-noopt" ]; then
@@ -31,13 +31,13 @@ else
       --build-arg CONFIG=$VAR \
       --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
       --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
-      -t $DOCKER_REPO:$DOCKER_TAG .
+      -t $DOCKER_REPO:$DOCKER_TAG -f $DOCKERFILE_PATH .
   else
     docker build \
       --build-arg CONFIG=$VAR \
       --build-arg SOURCE_BRANCH=$SOURCE_BRANCH \
       --build-arg SOURCE_COMMIT=$SOURCE_COMMIT \
-      -t $DOCKER_REPO:$DOCKER_TAG .
+      -t $DOCKER_REPO:$DOCKER_TAG -f $DOCKERFILE_PATH .
   fi
 fi
 
