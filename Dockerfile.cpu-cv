@@ -40,4 +40,4 @@ RUN apt-get update \
       && apt-get install --no-install-recommends --no-install-suggests -y libopencv-highgui3.2 \
       && rm -rf /var/lib/apt/lists/*
 
-COPY --from=builder /usr/local/bin/darknet /usr/loca/bin/darknet
+COPY --from=builder /usr/local/bin/darknet /usr/local/bin/darknet

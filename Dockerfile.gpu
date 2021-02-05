@@ -37,4 +37,4 @@ ENV SOURCE_BRANCH $SOURCE_BRANCH
 ARG SOURCE_COMMIT=unspecified
 ENV SOURCE_COMMIT $SOURCE_COMMIT
 
-COPY --from=builder /usr/local/bin/darknet /usr/loca/bin/darknet
+COPY --from=builder /usr/local/bin/darknet /usr/local/bin/darknet
