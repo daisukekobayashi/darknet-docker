@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS builder
+FROM ubuntu:20.04 AS builder
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -25,7 +25,7 @@ RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \
       && cp darknet /usr/local/bin \
       && cd .. && rm -rf darknet
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -37,7 +37,7 @@ ARG SOURCE_COMMIT=unspecified
 ENV SOURCE_COMMIT $SOURCE_COMMIT
 
 RUN apt-get update \
-      && apt-get install --no-install-recommends --no-install-suggests -y libopencv-highgui3.2 \
+      && apt-get install --no-install-recommends --no-install-suggests -y libopencv-highgui4.2 \
       && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /usr/local/bin/darknet /usr/local/bin/darknet

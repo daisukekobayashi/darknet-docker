@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=nvidia/cuda:10.0-cudnn7-devel
+ARG BASE_IMAGE=nvidia/cuda:11.2.2-cudnn8-devel-ubuntu20.04
 FROM $BASE_IMAGE AS builder
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
@@ -26,7 +26,7 @@ RUN git clone https://github.com/AlexeyAB/darknet.git && cd darknet \
       && cp darknet /usr/local/bin \
       && cd .. && rm -rf darknet
 
-FROM nvidia/cuda:10.0-cudnn7-runtime
+FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
 LABEL maintainer="Daisuke Kobayashi <daisuke@daisukekobayashi.com>"
 
 ENV DEBIAN_FRONTEND noninteractive

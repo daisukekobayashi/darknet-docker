@@ -4,7 +4,7 @@ Docker images for Darknet Yolo v4, v3 and v2. [AlexeyAB/darknet](https://github.
 
 ## Base Image Tags
 
-All of Darknet's images are based on Ubuntu 18.04. ``gpu-`` images are based on [10.0-cudnn7-devel-ubuntu18.04](https://hub.docker.com/r/nvidia/cuda/ "nvidia/cuda").
+All of Darknet's images are based on Ubuntu 20.04. ``gpu-`` images are based on 11.2.2-cudnn8-ubuntu 20.04
 
 Tags means options in the Makefile when darknet binary was built. You can check options [here](https://github.com/AlexeyAB/darknet#how-to-compile-on-linux "How to compile on Linux").
 
